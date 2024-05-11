@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddTasks = () => {
     const [title, setTitle] = useState('');
@@ -10,11 +11,18 @@ const AddTasks = () => {
         e.preventDefault();
 
         const task = {
+            id: uuidv4(),
             title,
             description,
             dueDate
         }
-        setTaskLists([...taskLists, task]);
+        
+        setTaskLists((prev) => {
+            const list = [...prev, task];
+
+            localStorage.setItem('tasks', JSON.stringify(list))
+            return list
+        });
         console.log('task', taskLists)
 
         // Clear input fields
@@ -22,6 +30,7 @@ const AddTasks = () => {
         setDescription('');
         setDueDate('');
     };
+    
 
     return (
         <div className='flex justify-center pt-8'>
