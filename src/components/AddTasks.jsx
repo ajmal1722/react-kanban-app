@@ -4,6 +4,7 @@ const AddTasks = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
+    const [taskLists, setTaskLists] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,7 +14,13 @@ const AddTasks = () => {
             description,
             dueDate
         }
-        console.log('task', task)
+        setTaskLists([...taskLists, task]);
+        console.log('task', taskLists)
+
+        // Clear input fields
+        setTitle('');
+        setDescription('');
+        setDueDate('');
     };
 
     return (
