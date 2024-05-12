@@ -2,6 +2,7 @@ import './App.css'
 import TaskCard from './components/TaskCard'
 import AddTasks from './components/AddTasks'
 import { useState, useEffect } from 'react'
+import ListTask from './components/ListTask'
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -15,6 +16,7 @@ function App() {
     <>
       <AddTasks/>
       <TaskCard/>
+      <ListTask/>
     </>
   )
 }
