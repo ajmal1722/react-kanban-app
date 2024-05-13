@@ -1,4 +1,4 @@
-import React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 const TaskCard = ({ task }) => {
     const title = task.title
@@ -7,11 +7,15 @@ const TaskCard = ({ task }) => {
 
     return (
         <div className='text-2xl border rounded-lg p-2 m-2 bg-gray-50 cursor-pointer'>
+            <div className="flex gap-3 justify-end text-lg px-3 mb-3">
+                <MdEdit/>
+                <MdDelete/>
+            </div>
             <div className="flex justify-between">
                 <h1 className='font-semibold text-gray-700'>
                     { title }
                 </h1>
-                <h1 className='font-semibold text-gray-700 mx-2'>
+                <h1 className='text-lg font-semibold text-gray-700 mx-2'>
                     { date }
                 </h1>
             </div>

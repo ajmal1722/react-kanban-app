@@ -10,7 +10,7 @@ const ListTask = ({ tasks, setTasks }) => {
             {statuses.map((item, index) => {
                 return (
                     <div key={index} className='border lg:max-w-96 sm:max-w-80 w-full rounded-lg'>
-                        <h1 className='text-xl font-semibold text-white bg-gray-600 text-center p-4 rounded-t-lg'>
+                        <h1 className='text-xl font-semibold text-white bg-gray-600 text-center p-4 rounded-t-lg mb-6'>
                             {item}
                         </h1>
                         { tasks && 
