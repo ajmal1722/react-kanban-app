@@ -1,10 +1,16 @@
 import { MdDelete, MdEdit } from 'react-icons/md'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { remove_task } from '../redux/tasks/taskSlice';
 
 const TaskCard = ({ task }) => {
     // const task = useSelector(state => state.tasks.value);
+    const dispatch = useDispatch()
 
-    const { title, description, dueDate } = task;
+    const { id, title, description, dueDate } = task;
+
+    const removeTask = (id) => {
+        dispatch(remove_task(id))
+    }
 
     return (
         <div className='text-2xl border rounded-lg p-4 m-2 bg-gray-50 cursor-pointer'>
@@ -14,7 +20,7 @@ const TaskCard = ({ task }) => {
                 </h1>
                 <div className="flex gap-3 justify-end text-lg px-3">
                     <MdEdit className='hover:text-green-700'/>
-                    <MdDelete className='hover:text-red-700'/>
+                    <MdDelete onClick={() => removeTask(id)} className='hover:text-red-700'/>
                 </div>
             </div>
             <div className="flex justify-between">
