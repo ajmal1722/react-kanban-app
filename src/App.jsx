@@ -15,7 +15,6 @@ function App() {
   return (
     <>
       <AddTasks/>
-      <TaskCard/>
       <ListTask/>
     </>
   )

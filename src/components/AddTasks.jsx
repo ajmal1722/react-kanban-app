@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import toast, { Toaster } from 'react-hot-toast';
-import { CiCirclePlus } from 'react-icons/ci'
+import { CiCirclePlus } from 'react-icons/ci';
 
 const AddTasks = () => {
     const [showForm, setShowForm] = useState(false);
@@ -53,33 +53,35 @@ const AddTasks = () => {
     return (
         <>
             <Toaster />
-            <div className='flex justify-center pt-16 my-8'>
+            <div className='flex justify-center pt-16 my-8 bg-red-600 px-6'>
                 {showForm ?
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="sm:flex md:flex-row md:items-center md:justify-between">
                         <input
                             type="text"
                             placeholder="Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            className='border border-gray-300 rounded-lg px-4 py-2 mb-2 mr-2'
+                            className='border border-gray-300 rounded-lg px-4 py-2 mb-2 md:mb-0 md:mr-2 w-full md:w-auto'
                         />
                         <input
                             type="text"
                             placeholder="Description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            className='border border-gray-300 rounded-lg px-4 py-2 mb-2 mr-2'
+                            className='border border-gray-300 rounded-lg px-4 py-2 mb-2 md:mb-0 md:mr-2 w-full md:w-auto'
                         />
                         <input
                             type="date"
                             placeholder="Due Date"
                             value={dueDate}
                             onChange={(e) => setDueDate(e.target.value)}
-                            className='border border-gray-300 rounded-lg px-4 py-2 mb-2 mr-2'
+                            className='border border-gray-300 rounded-lg px-4 py-2 mb-2 md:mb-0 md:mr-2 w-full md:w-auto'
                         />
-                        <button type="submit" className='text-gray-200 font-semibold bg-green-600 px-6 py-2 rounded-lg'>
+                        <div className="flex justify-center">
+                        <button type="submit" className='text-gray-200 font-semibold bg-green-600 px-6 py-2 rounded-lg  md:w-auto'>
                             Add Task
                         </button>
+                        </div>
                     </form> :
                     <div onClick={displayForm} className='text-lg text-white bg-green-600 px-6 py-2 rounded-lg cursor-pointer flex gap-2'>
                         Create a new Task

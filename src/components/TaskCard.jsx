@@ -6,7 +6,7 @@ const TaskCard = () => {
     const date = 'Date'
 
     return (
-        <div className='text-2xl border rounded-lg p-2 m-2 bg-gray-50'>
+        <div className='text-2xl border rounded-lg p-2 m-2 bg-gray-50 cursor-pointer'>
             <div className="flex justify-between">
                 <h1 className='font-semibold text-gray-700'>
                     { title }
