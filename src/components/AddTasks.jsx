@@ -21,6 +21,10 @@ const AddTasks = ({ tasks, setTasks }) => {
             return toast.error('Title must have 3 letters')
         }
 
+        if (title.length >= 40) {
+            return toast.error('Title should not have more than 40 letters')
+        }
+
         if (description.length <= 3) {
             return toast.error('description must have 3 letters')
         }
