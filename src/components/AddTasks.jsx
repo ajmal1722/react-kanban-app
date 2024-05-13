@@ -48,7 +48,7 @@ const AddTasks = () => {
         //     localStorage.setItem('tasks', JSON.stringify(list))
         //     return list
         // });
-        dispatch(create_task({ task: taskData }))
+        dispatch(create_task(taskData))
         console.log('button clicked...')
 
         toast.success('Your task is created succesfully!')

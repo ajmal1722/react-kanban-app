@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <AddTasks/>
-      <ListTask tasks={tasks} setTasks={setTasks}/>
+      <ListTask/>
     </>
   )
 }

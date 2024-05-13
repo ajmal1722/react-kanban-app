@@ -1,8 +1,9 @@
-import React from 'react'
 import TaskCard from './TaskCard'
+import { useSelector } from 'react-redux'
 
-const ListTask = ({ tasks, setTasks }) => {
+const ListTask = () => {
     const statuses = ['Pending', 'Progress', 'Completed']
+    const tasks = useSelector(state => state.tasks.value);
     console.log('muhammed ajmal', tasks)
 
     return (
@@ -18,7 +19,6 @@ const ListTask = ({ tasks, setTasks }) => {
                             .map(task => (
                                 <TaskCard key={task.id} task={task}/>
                             ))
-                            
                         }
                     </div>
                 )
