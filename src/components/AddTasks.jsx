@@ -2,15 +2,20 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import toast, { Toaster } from 'react-hot-toast';
 import { CiCirclePlus } from 'react-icons/ci';
+import { useSelector, useDispatch } from 'react-redux';
+import { create_task } from '../redux/tasks/taskSlice';
 
-const AddTasks = ({ tasks, setTasks }) => {
+const AddTasks = () => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
 
+    const tasks = useSelector(state => state.tasks.value)
+    const dispatch = useDispatch()
+    console.log('redux:' , tasks)
+
     const displayForm = () => {
-        console.log('button clicked...')
         setShowForm(prev => !prev)
     }
 
@@ -29,7 +34,7 @@ const AddTasks = ({ tasks, setTasks }) => {
             return toast.error('description must have 3 letters')
         }
 
-        const task = {
+        const taskData = {
             id: uuidv4(),
             title,
             description,
@@ -37,13 +42,14 @@ const AddTasks = ({ tasks, setTasks }) => {
             status: 'Pending'
         }
 
-        setTasks((prev) => {
-            const list = [...prev, task];
+        // setTasks((prev) => {
+        //     const list = [...prev, task];
 
-            localStorage.setItem('tasks', JSON.stringify(list))
-            return list
-        });
-        console.log('task', tasks)
+        //     localStorage.setItem('tasks', JSON.stringify(list))
+        //     return list
+        // });
+        dispatch(create_task({ task: taskData }))
+        console.log('button clicked...')
 
         toast.success('Your task is created succesfully!')
 

@@ -1,4 +1,5 @@
 import { MdDelete, MdEdit } from 'react-icons/md'
+import { useSelector } from 'react-redux'
 
 const TaskCard = ({ task }) => {
     const title = task.title
