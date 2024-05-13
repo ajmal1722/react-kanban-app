@@ -3,12 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import toast, { Toaster } from 'react-hot-toast';
 import { CiCirclePlus } from 'react-icons/ci';
 
-const AddTasks = () => {
+const AddTasks = ({ tasks, setTasks }) => {
     const [showForm, setShowForm] = useState(false);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
-    const [taskLists, setTaskLists] = useState([]);
 
     const displayForm = () => {
         console.log('button clicked...')
@@ -30,16 +29,17 @@ const AddTasks = () => {
             id: uuidv4(),
             title,
             description,
-            dueDate
+            dueDate,
+            status: 'Pending'
         }
 
-        setTaskLists((prev) => {
+        setTasks((prev) => {
             const list = [...prev, task];
 
             localStorage.setItem('tasks', JSON.stringify(list))
             return list
         });
-        console.log('task', taskLists)
+        console.log('task', tasks)
 
         toast.success('Your task is created succesfully!')
 
@@ -53,7 +53,7 @@ const AddTasks = () => {
     return (
         <>
             <Toaster />
-            <div className='flex justify-center pt-16 my-8 bg-red-600 px-6'>
+            <div className='flex justify-center pt-16 my-8 px-6'>
                 {showForm ?
                     <form onSubmit={handleSubmit} className="sm:flex md:flex-row md:items-center md:justify-between">
                         <input

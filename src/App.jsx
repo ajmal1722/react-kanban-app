@@ -6,6 +6,7 @@ import ListTask from './components/ListTask'
 
 function App() {
   const [tasks, setTasks] = useState([])
+  // const [taskLists, setTaskLists] = useState([]);
 
   console.log('taskFrom app:', tasks)
 
@@ -14,8 +15,8 @@ function App() {
   }, [])
   return (
     <>
-      <AddTasks/>
-      <ListTask/>
+      <AddTasks tasks={tasks} setTasks={setTasks} />
+      <ListTask tasks={tasks} setTasks={setTasks}/>
     </>
   )
 }

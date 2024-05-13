@@ -1,9 +1,9 @@
 import React from 'react'
 
-const TaskCard = () => {
-    const title = 'Title1'
-    const description = 'Description 1'
-    const date = 'Date'
+const TaskCard = ({ task }) => {
+    const title = task.title
+    const description = task.description
+    const date = task.dueDate
 
     return (
         <div className='text-2xl border rounded-lg p-2 m-2 bg-gray-50 cursor-pointer'>
