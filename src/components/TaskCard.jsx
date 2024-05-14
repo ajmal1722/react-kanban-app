@@ -1,6 +1,7 @@
 import { MdDelete, MdEdit } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 import { remove_task } from '../redux/tasks/taskSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 const TaskCard = ({ task }) => {
     // const task = useSelector(state => state.tasks.value);
@@ -10,6 +11,7 @@ const TaskCard = ({ task }) => {
 
     const removeTask = (id) => {
         dispatch(remove_task(id))
+        toast.success('Task removed succesfully!')
     }
 
     return (
@@ -31,6 +33,7 @@ const TaskCard = ({ task }) => {
             <p className='text-base my-2'>
                 { description }
             </p>
+            <Toaster />
         </div>
     );
 };
