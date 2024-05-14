@@ -10,7 +10,7 @@ const ListTask = () => {
         <div className='flex lg:gap-16 md:gap-8 gap-6 justify-center flex-wrap py-8  px-6'>
             {statuses.map((item, index) => {
                 return (
-                    <div key={index} className='border lg:max-w-96 sm:max-w-80 w-full rounded-lg'>
+                    <div key={index} className='border lg:max-w-96 sm:max-w-80 w-full rounded-lg min-h-96'>
                         <h1 className='text-xl font-semibold text-white bg-gray-600 text-center p-4 rounded-t-lg mb-6'>
                             {item}
                         </h1>

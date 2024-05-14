@@ -22,7 +22,7 @@ const AddTasks = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (title.length <= 3) {
+        if (title.length < 3) {
             return toast.error('Title must have 3 letters')
         }
 
@@ -30,7 +30,7 @@ const AddTasks = () => {
             return toast.error('Title should not have more than 40 letters')
         }
 
-        if (description.length <= 3) {
+        if (description.length < 3) {
             return toast.error('description must have 3 letters')
         }
 
