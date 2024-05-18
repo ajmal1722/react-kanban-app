@@ -2,6 +2,7 @@ import './App.css'
 import AddTasks from './components/AddTasks'
 import { useState, useEffect } from 'react'
 import ListTask from './components/ListTask'
+import { DragDropContext } from 'react-beautiful-dnd'
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -13,10 +14,10 @@ function App() {
     setTasks(JSON.parse(localStorage.getItem('tasks')))
   }, [])
   return (
-    <>
+    <DragDropContext>
       <AddTasks/>
       <ListTask/>
-    </>
+    </DragDropContext>
   )
 }
 
