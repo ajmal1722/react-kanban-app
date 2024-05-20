@@ -9,6 +9,8 @@ import { useState } from 'react';
 const TaskCard = ({ task, index }) => {
     const dispatch = useDispatch()
 
+    const [showEditModal, setShowEditModal] = useState()
+
     const { id, title, description, dueDate } = task;
 
     const removeTask = (id) => {
@@ -16,7 +18,9 @@ const TaskCard = ({ task, index }) => {
         toast.success('Task removed succesfully!')
     }
 
-    const [showEditModal, setShowEditModal] = useState()
+    const displayEditModal = (id) => {
+        setShowEditModal(true)
+    }
 
     return (
         <Draggable draggableId={task.id} index={index}>
@@ -28,7 +32,7 @@ const TaskCard = ({ task, index }) => {
                             { dueDate }
                         </h1>
                         <div className="flex gap-3 justify-end text-lg px-3">
-                            <MdEdit onClick={() => setShowEditModal(true)} className='hover:text-green-700 cursor-pointer'/>
+                            <MdEdit onClick={() => displayEditModal(id)} className='hover:text-green-700 cursor-pointer'/>
                             <MdDelete onClick={() => removeTask(id)} className='hover:text-red-700 cursor-pointer'/>
                         </div>
                     </div>
