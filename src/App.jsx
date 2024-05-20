@@ -5,6 +5,8 @@ import ListTask from './components/ListTask'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useSelector } from 'react-redux'
 import { update_task_status } from './redux/tasks/taskSlice'
+import { useState } from 'react'
+import EditModal from './components/EditModal'
 
 function App() {
 

@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux'
 import { remove_task } from '../redux/tasks/taskSlice';
 import toast, { Toaster } from 'react-hot-toast';
 import { Draggable } from 'react-beautiful-dnd';
+import EditModal from './EditModal';
+import { useState } from 'react';
 
 const TaskCard = ({ task, index }) => {
-    // const task = useSelector(state => state.tasks.value);
     const dispatch = useDispatch()
 
     const { id, title, description, dueDate } = task;
@@ -14,6 +15,8 @@ const TaskCard = ({ task, index }) => {
         dispatch(remove_task(id))
         toast.success('Task removed succesfully!')
     }
+
+    const [showEditModal, setShowEditModal] = useState()
 
     return (
         <Draggable draggableId={task.id} index={index}>
@@ -25,8 +28,8 @@ const TaskCard = ({ task, index }) => {
                             { dueDate }
                         </h1>
                         <div className="flex gap-3 justify-end text-lg px-3">
-                            <MdEdit className='hover:text-green-700'/>
-                            <MdDelete onClick={() => removeTask(id)} className='hover:text-red-700'/>
+                            <MdEdit onClick={() => setShowEditModal(true)} className='hover:text-green-700 cursor-pointer'/>
+                            <MdDelete onClick={() => removeTask(id)} className='hover:text-red-700 cursor-pointer'/>
                         </div>
                     </div>
                     <div className="flex justify-between">
@@ -38,9 +41,9 @@ const TaskCard = ({ task, index }) => {
                         { description }
                     </p>
                     <Toaster />
+                    { showEditModal &&<EditModal showEditModal={showEditModal} setShowEditModal={setShowEditModal} /> }
                 </div>    
-            )}
-               
+            )} 
         </Draggable>
         
     );
