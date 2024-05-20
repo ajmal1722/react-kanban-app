@@ -27,7 +27,8 @@ const ListTask = () => {
                                         <TaskCard key={task.id} task={task} index={index} /> 
                                     ))
                             }
-                            {provided.placeholder}
+                            {provided.placeholder} 
+                             {/* This is a placeholder that will be used to show the space where the item will be dropped */}
                         </div>
                     )}
                 </Droppable>
