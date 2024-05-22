@@ -19,9 +19,17 @@ export const taskSlice = createSlice({
             if (task) {
                 task.status = status
             }
+        },
+        update_task: (state, action) => {
+            console.log('state', state.value)
+            console.log('action',action)
+            const index = state.value.findIndex(task => task.id === action.payload.id);
+            if (index !== -1) {
+                state.value[index] = action.payload;
+            }
         }
     }
 })
 
-export const { create_task, remove_task, update_task_status } = taskSlice.actions;
+export const { create_task, remove_task, update_task_status, update_task } = taskSlice.actions;
 export default taskSlice.reducer
