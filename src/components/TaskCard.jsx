@@ -9,7 +9,8 @@ import { useState } from 'react';
 const TaskCard = ({ task, index }) => {
     const dispatch = useDispatch()
 
-    const [showEditModal, setShowEditModal] = useState()
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [editData, setEditData] = useState(null);
 
     const { id, title, description, dueDate } = task;
 
@@ -18,8 +19,10 @@ const TaskCard = ({ task, index }) => {
         toast.success('Task removed succesfully!')
     }
 
-    const displayEditModal = (id) => {
+    const displayEditModal = (task) => {
         setShowEditModal(true)
+        setEditData(task);
+        console.log('editData:', editData)
     }
 
     return (
@@ -32,7 +35,7 @@ const TaskCard = ({ task, index }) => {
                             { dueDate }
                         </h1>
                         <div className="flex gap-3 justify-end text-lg px-3">
-                            <MdEdit onClick={() => displayEditModal(id)} className='hover:text-green-700 cursor-pointer'/>
+                            <MdEdit onClick={() => displayEditModal(task)} className='hover:text-green-700 cursor-pointer'/>
                             <MdDelete onClick={() => removeTask(id)} className='hover:text-red-700 cursor-pointer'/>
                         </div>
                     </div>
@@ -45,7 +48,7 @@ const TaskCard = ({ task, index }) => {
                         { description }
                     </p>
                     <Toaster />
-                    { showEditModal &&<EditModal showEditModal={showEditModal} setShowEditModal={setShowEditModal} /> }
+                    { showEditModal &&<EditModal showEditModal={showEditModal} setShowEditModal={setShowEditModal} task={editData} /> }
                 </div>    
             )} 
         </Draggable>
